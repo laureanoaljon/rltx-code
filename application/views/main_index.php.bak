@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>State of the Rice Sector in the Philippines</title>
+    <meta name="description" content="Main Page">
+    <?php 
+            echo link_tag('css/bootstrap-reboot.min.css');
+            echo link_tag('css/bootstrap.min.css');
+            echo link_tag('css/bootstrap-grid.min.css');
+            echo link_tag('css/bootstrap-icons.css');
+            echo link_tag('css/sidebarjs.min.css');
+            echo link_tag('css/styles.css');     
+    ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E2XBB2166Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E2XBB2166Q');
+</script></head>
+
+<body>
+    <!-- Navigation --->  
+    <div class="container-fluid">
+        <div class="row">
+             <div id="sidebarView" sidebarjs>
+                <div class="content">
+                    <div id="sidebarToggle" class="text-white" sidebarjs-toggle><i class="bi bi-chevron-left"></i></div>
+                    <img id="riceLyticsLogo" class="mx-auto d-block" src="<?php echo base_url(); ?>assets/ricelytics_logo.png" alt="RiceLytics logo">
+		    <p class="text-center text-white">Supported by:</p>
+		    <img id="riceLyticsLogo" class="mx-auto d-block mb-4 mt-4" style="height: 80px;" src="<?php echo base_url(); ?>assets/dost-pcieerd.png" alt="DOST PCIEERD logo">
+                    <nav class="navbar flex-column">    
+                        <a class="active w-100 mr-2 text-white text-center d-block" href="<?php echo base_url(); ?>" role="button">Rice Industry</a>
+                        <a class="w-100 mr-2 text-white text-center d-block" href="<?php echo base_url(); ?>profilemain" role="button">Rice Farmer</a>
+                        <a class="w-100 mr-2 text-white text-center d-block" href="<?php echo base_url(); ?>farmpractices" role="button">Farming Practices</a>
+                        <a id="feedback-button" class="btn btn-lg btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfEF9gSkpH6BlzT7n2pfckBlUNY0HKQJxn8RIOoKUt69B1jdg/viewform" role="button">Feedback</a>
+                    </nav>
+                </div>
+            </div>
+            <nav id="sidebarMenu" class="col d-md-block sidebar collapse">
+                <div class="sidebar-sticky pt-1">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <div id="sidebarToggle" class="text-white" sidebarjs-toggle><i class="bi bi-list"></i></div>
+                            <img id="riceLyticsLogo" src="<?php echo base_url(); ?>assets/ricelytics_logo_vertical.png" alt="RiceLytics logo">
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="btn btn-warning text-white" href="<?php echo base_url(); ?>" role="button"><i class="bi bi-house-door-fill"></i> National</a>
+                    <div class="dropdown">
+                        <button class="btn btn-light border dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Region
+                        </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <?php for ($i = 0; $i < count($regions); $i++) {
+                                    echo '<a class="dropdown-item" href="'.base_url().'main/region/'.$regions[$i]["id"].'">'.$regions[$i]["location_name"].'</a>';
+                                } ?>
+                            </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-light border dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Province
+                        </button>
+                        <div class="provinces-dropdown dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <?php
+                            $temp_region = "";
+                            for ($i = 0; $i < count($provinces); $i++) {                            
+                                if($provinces[$i]['region_name'] != $temp_region){
+                                    echo '<a class="dropdown-item disabled font-weight-bold">'. $provinces[$i]['region_name'] . '</a>';
+                                }
+                                echo '<a class="pl-5 dropdown-item" href="'.base_url().'main/province/'.$provinces[$i]["province_id"].'">'.$provinces[$i]["province"].'</a>';
+                                $temp_region = $provinces[$i]['region_name'];
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </nav>
+                <div id="main" class="jumbotron text-center">
+                    <div class="jumbotron-content">
+                        <h2>State of the Rice Sector in the</h2>
+                        <h1>Philippines</h1>
+                        <p class="lead"><i>What is the status of the rice industry?</i> Explore and get insights about the trend of the <br />key performance indicators of rice production, consumption, and market.</p>
+                        <div class="card-note mx-auto rounded-pill bg-light">
+                            <h6 class="text-dark p-1">Population: <strong>110.2 MILLION</strong> (PSA, 2021)</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="dashboard">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="card-group text-center text-white">
+                                        <div class="card primary mb-2 bg-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-left"><a href="<?php echo base_url(); ?>productions" class="text-white stretched-link text-decoration-none">Palay Production (2021)</a></h5>
+                                        <h1 class="card-text font-weight-bold"><?php echo $production_all['value']; ?><i class="<?php echo $prod_caret; ?>"></i></h1>
+                                        <div class="card-note w-50 mx-auto rounded-pill bg-warning">
+                                            <p class="text-white">million metric tons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                    </div>
+                                      
+                                </div>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0 text-center text-white">
+                                                <div class="card primary mb-2 bg-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-left"><a href="<?php echo base_url(); ?>harvestareas" class="text-white stretched-link text-decoration-none">Area Harvested (2021)</a></h5>
+                                        <h1 class="card-text font-weight-bold"><?php echo $harvestarea_all['value']; ?> <i class="<?php echo $area_caret; ?>"></i></h1>
+                                        <div class="card-note w-50 mx-auto rounded-pill bg-warning">
+                                            <p class="text-white">million hectares</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                            </div>                               
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0 text-center text-white">
+                                                <div class="card primary mb-2 bg-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-left"><a href="<?php echo base_url(); ?>estyields" class="text-white stretched-link text-decoration-none">Yield per Hectare (2021)</a></h5>
+                                        <h1 class="card-text font-weight-bold"><?php echo $estyield_all['value']; ?> <i class="<?php echo $yield_caret; ?>"></i></h1>
+                                        <div class="card-note w-75 mx-auto rounded-pill bg-warning">
+                                            <p class="text-white">metric tons per hectare</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="card-group">
+                                        <div class="card secondary text-center">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col border-right">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>supplies" class="text-black stretched-link text-decoration-none">Supply (2020)</a></h6>
+                                                        <h2 class="card-text"><?php echo number_format($supply['value'] / 1000, 2); ?><i class="<?php echo $supply_caret; ?>"></i></h2>
+                                                        <p>million metric tons</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>supplies" class="text-black stretched-link text-decoration-none">Utilization (2020)</a></h6>
+                                                        <h2 class="card-text"><?php echo number_format($util['value'] / 1000, 2); ?><i class="<?php echo $util_caret; ?>"></i></h2>
+                                                        <p>million metric tons</p>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-group">
+                                        <div class="card secondary mt-2 text-center">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col border-right">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>consumption" class="text-black stretched-link text-decoration-none">Annual Per Capita Consumption (2016)</a></h6>
+                                                        <h2 class="card-text"><?php echo $actual_per_capita_values['KgPerYear']; ?><i class="<?php echo $kg_caret; ?>"></i></h2>
+                                                        <p>kilograms</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>consumption" class="text-black stretched-link text-decoration-none">Daily Per Capita Consumption (2016)</a></h6>
+                                                        <h2 class="card-text"><?php echo $actual_per_capita_values['GmPerDay']; ?><i class="<?php echo $gram_caret; ?>"></i></h2>
+                                                        <p>grams</p>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-group">
+                                        <div class="card secondary mt-2 text-center">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col border-right">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>impexports" class="text-black stretched-link text-decoration-none">Imports (2020)</a></h6>
+                                                        <h2 class="card-text"><?php echo number_format($supply_sources_values['SUImports'] / 1000, 2); ?><i class="<?php echo $imports_caret; ?>"></i></h2>
+                                                        <p>million metric tons</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>impexports" class="text-black stretched-link text-decoration-none">Exports (2020)</a></h6>
+                                                        <h2 class="card-text">&lt; 1<i class="bi bi-dash"></i></h2>
+                                                        <p>thousand metric tons</p>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
+                                                <div class="card secondary text-center">
+                                                    <div class="card-body pl-3 pr-3">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>valuations" class="text-black stretched-link text-decoration-none">Value of Rice Production (2021)</a></h6>
+                                                        <h1 class="card-text">P <?php echo number_format($latest_palay_valuation['value'] / 1000, 2); ?><i class="<?php echo $valuation_caret; ?>"></i></h1>
+                                                        <p>Billion</p>                                                
+                                                    </div>
+                                                    <div class="card-body pl-3 pr-3">
+                                                        <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>valuations" class="text-black stretched-link text-decoration-none">Percent Share to Value of Agricultural Production (2021)</a></h6>
+                                                        <div><canvas id="ctxAgriShare"></canvas></div>
+                                                    </div>
+                                                </div>
+                                            </div>                               
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
+                                                <div class="card secondary p-0 text-center">
+                                                    <div class="card-body pl-3 pr-3">
+                                                        <div class="row">
+                                                            <div class="col border-right">
+                                                                <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>incomes" class="text-black stretched-link text-decoration-none">Net Returns (2020)</a></h6>
+                                                                <h2 class="card-text mt-5">P <?php echo $net_returns['value']; ?><i class="<?php echo $net_caret; ?>"></i></h2>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h6 class="card-title text-left"><a href="<?php echo base_url(); ?>incomes" class="text-black stretched-link text-decoration-none">Gross Returns</a></h6>
+                                                                <h2 class="card-text mb-2">P <?php echo $gross_returns['value']; ?><i class="<?php echo $gross_caret; ?>"></i></h2>
+                                                                <h6 class="card-title text-left mt-3"><a href="<?php echo base_url(); ?>incomes" class="text-black stretched-link text-decoration-none">Total Cost</a></h6>
+                                                                <h2 class="card-text mb-2">P <?php echo $total_costs; ?><i class="<?php echo $cost_caret; ?>"></i></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="mb-3">per hectare per cropping season</p>
+                                                </div>
+                                                <div class="card bg-primary mt-2 pt-1 pb-2 text-center">
+                                                    <div class="card-body text-white">
+                                                        <div class="row">
+                                                            <div class="col d-flex align-items-center">
+                                                                <h6 class="card-title text-left pl-2 align-middle"><a href="<?php echo base_url(); ?>yieldcost" class="text-white stretched-link text-decoration-none">Productivity Indicators</a></h6>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center">
+                                                                <a href="<?php echo base_url(); ?>yieldcost" class="text-white stretched-link text-decoration-none"><img id="ani_at_kita" src="<?php echo base_url(); ?>assets/ani_at_kita_logo.png"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card secondary col-12 mt-2 text-center">
+                            <div class="card-body mb-0 pb-1">
+                                <div class="row">
+                                    <div class="col-4 border-right">
+					<div class="row mb-1">
+                                            <div class="col border-right">
+                                                 <h6 class="card-title text-left mt-1 pb-2"><a href="<?php echo base_url(); ?>incomes" class="text-black stretched-link text-decoration-none">Production Cost (2020)</a></h6>
+                                                <h2 class="card-text mb-2">P <?php echo $total_costs_int; ?><i class="<?php echo $unit_caret; ?>"></i></h2>                                             </div>
+                                            <div class="col">
+                                                 <h6 class="card-title text-left mt-1 pb-2"><a href="<?php echo base_url(); ?>farmgate" class="text-black stretched-link text-decoration-none">Dry Palay Price <br/>(2021)</a></h6>
+                                                 <h2 class="card-text">P <?php echo $farmgate['value']; ?><i class="<?php echo $fg_caret; ?>"></i></h2>
+                                            </div>
+                                        </div>                              
+                                    </div>
+                                    <div class="col-4 border-right">
+                                        <h6 class="text-left pl-1 mt-1 text-left">Rice Wholesale Prices (2021)</h6>
+                                        <div class="row mb-1">
+                                            <div class="col border-right">
+                                                 <h6 class="card-title text-left pl-2"><a href="<?php echo base_url(); ?>wholesale" class="text-black stretched-link text-decoration-none">Regular-Milled</a></h6>
+                                                 <h2 class="card-text">P <?php echo $wholesale['value']; ?><i class="<?php echo $wg_caret; ?>"></i></h2>
+                                             </div>
+                                            <div class="col">
+                                                 <h6 class="card-title text-left pl-2"><a href="<?php echo base_url(); ?>wholesale" class="text-black stretched-link text-decoration-none">Well-Milled</a></h6>
+                                                 <h2 class="card-text">P <?php echo $wholesale_sp['value']; ?><i class="<?php echo $ws_caret; ?>"></i></h2>
+                                             </div>
+                                        </div>                                
+                                    </div>
+                                    <div class="col-4">
+                                       <h6 class="text-left mt-1">Rice Retail Prices (2021)</h6>
+                                        <div class="row mb-1">
+                                            <div class="col border-right">
+                                                 <h6 class="card-title text-left pl-2"><a href="<?php echo base_url(); ?>retail" class="text-black stretched-link text-decoration-none">Regular-Milled</a></h6>
+                                                 <h2 class="card-text">P <?php echo $retail['value']; ?><i class="<?php echo $rg_caret; ?>"></i></h2>
+                                             </div>
+                                            <div class="col">
+                                                 <h6 class="card-title text-left pl-2"><a href="<?php echo base_url(); ?>retail" class="text-black stretched-link text-decoration-none">Well-Milled</a></h6>
+                                                 <h2 class="card-text">P <?php echo $retail_sp['value']; ?><i class="<?php echo $rs_caret; ?>"></i></h2>
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <p class="d-block mx-auto mt-2">per kilogram</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col pl-0">
+                            <div class="card mb-2">
+                                <div class="card-body chart-all">  
+                                    <h6 class="my-0 pb-2"><a href="<?php echo base_url(); ?>productions" class="text-decoration-none stretched-link">Top 10 Rice-Producing Provinces (2021)</a></h6>
+                                    <p>IN MILLION METRIC TONS (PSA, 2022)</p>  
+                                    <div><canvas id="ctxTopProv"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="card mb-4">
+                                <div class="card-body chart-all">  
+                                    <h6 class="my-0 pb-2"><a href="<?php echo base_url(); ?>estyields" class="text-decoration-none stretched-link">Top 10 High-Yielding Provinces (2021)</a></h6> 
+                                    <p>IN METRIC TONS PER HECTARE (PSA, 2022)</p>   
+                                    <div><canvas id="ctxTopYield"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col pr-0">
+                                <a target="_blank" href="https://prism.philrice.gov.ph/dataproducts/">
+                                    <div class="card mb-0">
+                                        <img class="card-img-top" src="<?php echo base_url(); ?>assets/prism_smaller.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-footer bg-primary text-white text-center">PRISM Rice Area</div>
+                                </a>
+                        </div>
+                    </div>
+                    <?php echo $footer; ?>
+                </div> 
+            </main>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/sidebarjs.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/chart.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/custom.js"></script>
+    <script>
+        var sidebarjs = new SidebarJS.SidebarElement();
+        
+        Chart.pluginService.register({
+            beforeDraw: function(chart) {
+                if (chart.config.options.elements.center) {
+                    // Get ctx from string
+                    var ctx = chart.chart.ctx;
+
+                    // Get options from the center object in options
+                    var centerConfig = chart.config.options.elements.center;
+                    var fontStyle = centerConfig.fontStyle || 'Arial';
+                    var txt = centerConfig.text;
+                    var color = centerConfig.color || '#000';
+                    var maxFontSize = centerConfig.maxFontSize || 75;
+                    var sidePadding = centerConfig.sidePadding || 20;
+                    var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+                    // Start with a base font of 30px
+                    ctx.font = "30px " + fontStyle;
+
+                    // Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+                    var stringWidth = ctx.measureText(txt).width;
+                    var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+                    // Find out how much the font can grow in width.
+                    var widthRatio = elementWidth / stringWidth;
+                    var newFontSize = Math.floor(30 * widthRatio);
+                    var elementHeight = (chart.innerRadius * 2);
+
+                    // Pick a new font size so it will not be larger than the height of label.
+                    var fontSizeToUse = Math.min(newFontSize, elementHeight, maxFontSize);
+                    var minFontSize = centerConfig.minFontSize;
+                    var lineHeight = centerConfig.lineHeight || 25;
+                    var wrapText = false;
+
+                    if (minFontSize === undefined) {
+                        minFontSize = 20;
+                    }
+
+                    if (minFontSize && fontSizeToUse < minFontSize) {
+                        fontSizeToUse = minFontSize;
+                        wrapText = true;
+                    }
+
+                    // Set font settings to draw it correctly.
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                    var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                    ctx.font = fontSizeToUse + "px " + fontStyle;
+                    ctx.fillStyle = color;
+
+                    if (!wrapText) {
+                        ctx.fillText(txt, centerX, centerY);
+                        return;
+                    }
+
+                    var words = txt.split(' ');
+                    var line = '';
+                    var lines = [];
+
+                    // Break words up into multiple lines if necessary
+                    for (var n = 0; n < words.length; n++) {
+                        var testLine = line + words[n] + ' ';
+                        var metrics = ctx.measureText(testLine);
+                        var testWidth = metrics.width;
+                        if (testWidth > elementWidth && n > 0) {
+                            lines.push(line);
+                            line = words[n] + ' ';
+                        } else {
+                            line = testLine;
+                        }
+                    }
+
+                    // Move the center up depending on line height and number of lines
+                    centerY -= (lines.length / 2) * lineHeight;
+
+                    for (var n = 0; n < lines.length; n++) {
+                        ctx.fillText(lines[n], centerX, centerY);
+                        centerY += lineHeight;
+                    }
+                    //Draw text in center
+                    ctx.fillText(line, centerX, centerY);
+                }
+            }
+        });
+
+        Chart.defaults.global.responsive = true;
+        Chart.defaults.global.tooltips.mode = 'index';
+        Chart.defaults.global.tooltips.intersect = false;
+        Chart.defaults.global.defaultFontFamily = 'Poppins';
+        Chart.defaults.global.defaultFontSize = 12;
+        Chart.defaults.global.animation.duration = 3000;
+
+        // CHART 1
+
+        var ctx = document.getElementById("ctxAgriShare");
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [79.3, 20.7],
+                    backgroundColor: [
+                        '#A6CEE3', // COLOR 1
+                        '#2138B7' // COLOR 2
+                    ],
+                    borderColor: [
+                        '#A6CEE3', // COLOR 1
+                        '#2138B7' // COLOR 2
+                    ]
+                }]
+            },
+            options: {
+                cutoutPercentage: 60,
+                aspectRatio: 2.05,
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: 15
+                },
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    labels: false
+                },
+                elements: {
+                    center: {
+                        text: '<?php echo $latest_palay_agri_share['value']; ?>%',
+                        color: '#212529', // Default is #000000
+                        fontStyle: 'Poppins', // Default is Arial
+                        sidePadding: 20, // Default is 20 (as a percentage)
+                        minFontSize: 12, // Default is 20 (in px), set to false and text will not wrap.
+                        lineHeight: 25 // Default is 25 (in px), used for when text wraps
+                    }
+                }
+            }
+        });
+        
+        // CHART 2
+            
+            var dbProvs = JSON.parse('<?php echo $provincial_production_all; ?>');
+                        
+            let provinces = [];
+            let values = [];
+
+            try {
+              dbProvs.map((item) => {
+                provinces.push(item.location_name);
+                values.push(item.value);
+              });
+            } catch (error) {
+              console.log(error);
+            }
+            
+            var tempPrLabels = [...provinces];
+            var topProvData = [...values];
+                
+            var topProv = document.getElementById('ctxTopProv').getContext('2d');
+            var topProvChart = new Chart(topProv, {
+                // The type of chart we want to create
+                type: 'horizontalBar',
+
+                data: {
+                    labels: tempPrLabels,
+                    datasets: [{
+                        label: 'Total palay produced',
+                        backgroundColor: '#2138B7',   // COLOR 4
+                        borderColor: '#2138B7',       // COLOR 4
+                        fill: false,
+                        data: topProvData
+                    }]
+                },
+
+                options: {
+                    aspectRatio: 2,
+                    scales: {
+                        xAxes: [{
+                            display: false
+                        }],
+                        yAxes: [{
+                            display: true,
+                            ticks: {
+                                suggestedMin: 0,
+                            },
+                            gridLines: {
+                                color: "rgba(0, 0, 0, 0)"
+                            }
+                        }]
+                    },
+                    tooltips: false,
+                    layout: {
+                        padding: {
+                            right: 25
+                        }
+                    },
+                    legend: {
+                        display: false,
+                        labels: {
+                            fontSize:12 
+                        }
+                    },
+                    hover: {
+                      animationDuration: 0
+                    },
+                    animation: {
+                          duration: 0,
+                            onComplete: function() {
+                              let chartInstance = this.chart,
+                              ctx = chartInstance.ctx;
+                              ctx.textAlign = 'center';
+                              ctx.textBaseline = 'bottom';
+                              // ctx.font = ctx.font.replace(/\d+px/, "7px");
+                              this.data.datasets.forEach(function(dataset, i)
+                                                        {
+                                let meta = chartInstance.controller.getDatasetMeta(i);
+                                meta.data.forEach(function(bar, index) {
+                                  let data = Number(dataset.data[index]).toFixed(1);
+                                  ctx.fillText(data, bar._model.x + 15 , bar._model.y + 8);
+                                });
+                              });
+                            }
+                        } 
+                    }
+                });
+        
+            // Chart 3
+        
+            var dbProvsT = JSON.parse('<?php echo $provincial_yield_all; ?>');
+
+            let provincesT = [];
+            let valuesT = [];
+            let bgColorsT = [];
+
+            try {
+              dbProvsT.map((item) => {
+                provincesT.push(item.location_name);
+                valuesT.push(item.value);
+                bgColorsT.push("#28A745"); 
+              });
+            } catch (error) {
+              console.log(error);
+            }
+
+            var tempYLabelsT = [...provincesT];
+            var topProvDataT = [...valuesT];
+            var topProvColorT = [...bgColorsT];
+
+        
+            var topYield = document.getElementById('ctxTopYield').getContext('2d');
+            var topYieldChart = new Chart(topYield, {
+                // The type of chart we want to create
+                type: 'horizontalBar',
+
+                data: {
+                    labels: tempYLabelsT,
+                    datasets: [{
+                        label: 'Yield per hectare (mt)',
+                        fill: false,
+                        backgroundColor: topProvColorT,   // COLOR 4
+                        borderColor: topProvColorT,       // COLOR 4
+                        data: topProvDataT
+                    }]
+                },
+
+                options: {
+                    aspectRatio: 2,
+                    scales: {
+                        xAxes: [{
+                            display: false
+                        }],
+                        yAxes: [{
+                            display: true,
+                            gridLines: {
+                                color: "rgba(0, 0, 0, 0)"
+                            }
+                        }]
+                    },
+                    layout: {
+                        padding: {
+                            right: 25
+                        }
+                    },
+                    legend: {
+                    display: false,
+                    },
+                    tooltips: false,
+                    hover: {
+                      animationDuration: 0
+                    },
+                    animation: {
+                      duration: 0,
+                        onComplete: function() {
+                          let chartInstance = this.chart,
+                              ctx = chartInstance.ctx;
+
+                          ctx.textAlign = 'center';
+                          ctx.textBaseline = 'bottom';
+                          // ctx.font = ctx.font.replace(/\d+px/, "7px");
+                          this.data.datasets.forEach(function(dataset, i)
+                                                    {
+                            let meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function(bar, index) {
+                              let data = dataset.data[index];
+                              ctx.fillText(data, bar._model.x + 15 , bar._model.y + 8);
+                            });
+                          });
+                        }
+                    }  
+                }
+            });
+    </script>
+</body>
+
+</html>

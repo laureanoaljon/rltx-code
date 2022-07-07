@@ -1,0 +1,1085 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../webfonts/Poppins-Medium.woff2') format('woff2'),
+        url('../webfonts/Poppins-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../webfonts/Poppins-Bold.woff2') format('woff2'),
+        url('../webfonts/Poppins-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../webfonts/Poppins-Regular.woff2') format('woff2'),
+        url('../webfonts/Poppins-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../webfonts/Poppins-SemiBold.woff2') format('woff2'),
+        url('../webfonts/Poppins-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../webfonts/Poppins-Light.woff2') format('woff2'),
+        url('../webfonts/Poppins-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+* {
+    font-family: 'Poppins' !important;
+    font-weight: normal;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+h1,
+h2 {
+    margin-bottom: 0;
+}
+
+h1 {
+    font-family: 'Poppins' !important;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+h2 {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+p {
+    font-family: 'Poppins' !important;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+nav {
+    background-color: white !important;
+}
+
+nav#sidebarMenu {
+    background-color: #131313 !important;
+    height: 100vh;
+    max-width: 48px !important;
+    padding-right: 4px;
+    padding-left: 4px;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+nav#sidebarMenu div#sidebarToggle {
+    font-size: 30px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+nav#sidebarMenu div.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+nav#sidebarMenu img#riceLyticsLogo {
+    width: 40px;
+}
+
+div#sidebarView .content {
+    height: 100%;
+    padding: 20px 0px;
+}
+
+div#sidebarView div#sidebarToggle {
+    padding: 0px 20px;
+}
+
+
+div#sidebarView nav.navbar a.w-100 {
+    padding: 15px 10px;
+    font-size: 1.25em !important;
+    text-transform: uppercase;
+    color: #0174e7 !important;
+}
+
+div#sidebarView nav.navbar a.w-100.active {
+    color: #fe7f00 !important;
+}
+
+div#sidebarView .content .navbar {
+    background-color: #171716 !important;
+}
+
+div#sidebarView .content {
+    background-image: url("../assets/drone.jpg") !important;
+}
+
+div#sidebarView img#riceLyticsLogo {
+    margin: 35px 0;
+}
+
+nav a.btn,
+nav button {
+    font-family: 'Poppins' !important;
+    font-weight: 300;
+    font-size: 11px !important;
+    margin: 0 20px 0 0 !important;
+    padding: 4px 8px;
+}
+
+main.col {
+    padding: 0;
+    margin-left: 48px;
+}
+
+div.jumbotron,
+div.dashboard,
+div.sublevel {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+div.dashboard,
+div.sublevel {
+    padding-top: 10px;
+    background: white;
+    padding-bottom: 10px;
+    min-height: calc(100vh - 220px);
+}
+
+.col,
+.col-1,
+.col-10,
+.col-11,
+.col-12,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-auto,
+.col-lg,
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-auto,
+.col-md,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-auto,
+.col-sm,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-auto,
+.col-xl,
+.col-xl-1,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-auto {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.jumbotron {
+    position: relative;
+    padding: 0.75em;
+    height: 170px;
+}
+
+.dropdown-item {
+    font-size: 11px;
+}
+
+.lead {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.jumbotron:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-image: url("../assets/Heading - Produc.png");
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.jumbotron#area:before {
+    background-image: url("../assets/Heading - area.png") !important;
+}
+
+.jumbotron#yield:before {
+    background-image: url("../assets/Heading - yield.png") !important;
+}
+
+.jumbotron#supply:before {
+    background-image: url("../assets/Heading - Supply and Uti.png") !important;
+}
+
+.jumbotron#consumption:before {
+    background-image: url("../assets/Heading - Consump.png") !important;
+}
+
+.jumbotron#imports:before {
+    background-image: url("../assets/Heading - import export.png") !important;
+}
+
+.jumbotron#valuation:before {
+    background-image: url("../assets/Heading - GVA.png") !important;
+}
+
+.jumbotron#incomes:before {
+    background-image: url("../assets/Heading - Income.png") !important;
+}
+
+.jumbotron#prices:before {
+    background-image: url("../assets/Heading - Market Price.png") !important;
+}
+
+.jumbotron#yieldcost:before {
+    background-image: url("../assets/Heading - Yield vs Prod Cost.png") !important;
+}
+
+.jumbotron#netincome:before {
+    background-image: url("../assets/Farmer - Net Income.png") !important;
+}
+
+.jumbotron#social:before {
+    background-image: url("../assets/Farmer - AGe.png") !important;
+}
+
+.jumbotron#farmdetails:before {
+    background-image: url("../assets/Farmer - Size and Own.png") !important;
+}
+
+.jumbotron#farmexp:before {
+    background-image: url("../assets/Farmer - Educ and Exp.png") !important;
+}
+
+.jumbotron#hhsize:before {
+    background-image: url("../assets/Farmer - Household Size.png") !important;
+}
+
+.jumbotron#orgtrain:before {
+    background-image: url("../assets/Farmer - Org and Training.png") !important;
+}
+
+.jumbotron#cropest:before {
+    background-image: url("../assets/Practices - CropEst.png") !important;
+}
+
+.jumbotron#seedrate:before {
+    background-image: url("../assets/Practices - Seed Rate.png") !important;
+}
+
+.jumbotron#fertuse:before {
+    background-image: url("../assets/Practices - Fertilizer.png") !important;
+}
+
+.jumbotron#seedclass:before {
+    background-image: url("../assets/Practices - Seed Class.png") !important;
+}
+
+.jumbotron#labor:before {
+    background-image: url("../assets/Practices - Labor Mngt.png") !important;
+}
+
+.jumbotron#default:before {
+    background-image: url("../assets/Heading.png") !important;
+}
+
+.jumbotron div.card-note {
+    width: fit-content;
+    padding: 0 15px;
+    margin-top: 8px;
+}
+
+.jumbotron div.card-note h6 {
+    font-size: 12px;
+}
+
+div#main:before {
+    background-image: url("../assets/Heading.png") !important;
+}
+
+.jumbotron-content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+}
+
+.dashboard,
+.sublevel {
+    padding: 0 1.5em;
+}
+
+.card-body {
+    padding: .75rem;
+}
+
+.card-title {
+    margin-bottom: .5rem;
+}
+
+.card-deck .card {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card.mb-4 i.bi,
+.card.mb-4.bg-warning i.bi,
+.card.mb-2 i.bi,
+.card.mb-2.bg-warning.col-6 i.bi {
+    font-size: 16px;
+    float: right;
+    display: inline;
+    vertical-align: middle;
+    line-height: 40px;
+    position: absolute;
+    margin-left: 7px;
+    color: #FE7F00;
+}
+
+.col-xs-12 .card.mb-2.bg-warning i.bi {
+    line-height: 35px;
+}
+
+.card {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.card.mb-4.bg-warning i.bi,
+.card.mb-2.bg-warning i.bi,
+.card.mb-2.bg-warning.col-6 i.bi {
+    color: #212529;
+}
+
+.sublevel .card i.bi {
+    line-height: 60px;
+}
+
+.farmer .card i.bi {
+    line-height: 60px;
+}
+
+.dashboard .card.primary i.bi {
+    float: right;
+    display: inline;
+    vertical-align: middle;
+    line-height: 60px;
+    position: absolute;
+    margin-left: 5px;
+    color: #FE7F00;
+}
+
+.card.secondary h1 {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 30px;
+}
+
+.card.secondary h1 i.bi {
+    line-height: 45px;
+}
+
+.card.bg-alternate {
+    background: #9EC5D9;
+}
+
+.card.bg-alternate i.bi {
+    color: #2138B7;
+}
+
+.card.primary h1 {
+    font-family: 'Poppins' !important;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.card.primary h1.smaller {
+    font-size: 40px !important;
+}
+
+.card.primary h1.smaller i.bi {
+    font-size: 12px !important;
+    line-height: 50px !important;
+    ;
+}
+
+.card.primary h2 {
+    margin-left: -15px;
+    font-size: 45px;
+}
+
+h3.larger {
+    font-size: 42px !important;
+}
+
+.farmer .card.primary h2 {
+    margin-left: -15px;
+    font-size: 52px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.card.primary p {
+    font-family: 'Poppins' !important;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.card.primary h2 i.bi {
+    line-height: 50px;
+}
+
+.farmer .card.primary h1 {
+    font-size: 48px;
+}
+
+.farmer .card.primary h3 i.bi {
+    line-height: 34px !important;
+}
+
+.farmer .card.primary h4 i.bi {
+    font-size: 9px !important;
+    line-height: 27px !important;
+}
+
+.card.primary i {
+    font-size: 30px;
+}
+
+.card.primary h5 {
+    font-family: 'Poppins' !important;
+    font-weight: normal;
+    font-size: 15px;
+    text-align: left;
+}
+
+.card.primary .card-note {
+    background-color: #A6CEE3;
+}
+
+.card h5 {
+    font-family: 'Poppins' !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.card h6 {
+    font-family: 'Poppins' !important;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.card h2 {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 34px;
+}
+
+.card.secondary p {
+    margin-bottom: 5px;
+}
+
+.card.secondary h2 {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.card p {
+    font-family: 'Poppins' !important;
+    font-weight: 200;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.card p.card-title-note {
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+footer h5 {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+div.footer h6 {
+    font-size: 12px !important;
+}
+
+footer li {
+    font-family: 'Poppins' !important;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.chart-header {
+    max-width: 1000px;
+}
+
+.card-footer.text-muted {
+    font-size: 13px;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.table td,
+.table th {
+    font-size: 16px;
+    padding: 6px 10px;
+}
+
+.box {
+    height: 20px;
+    width: 20px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    clear: both;
+}
+
+.card.primary.mb-4.text-dark,
+.card.primary.mb-4.bg-warning {
+    margin-right: 7px !important;
+    margin-left: 7px !important;
+}
+
+.farmer .card.primary i.bi {
+    line-height: 60px !important;
+}
+
+.card.bg-primary-2 {
+    background: #b85631 !important;
+}
+
+.card.bg-primary-2 .card-note {
+    background: #17256b !important;
+}
+
+.card.bg-primary-2 i.bi {
+    color: #17256b !important;
+}
+
+.card.bg-alternate-3 {
+    background: #fc8a17;
+    color: white;
+}
+
+.card.bg-alternate-3 .card-note {
+    background: #1f38b7 !important;
+}
+
+.card.bg-alternate-3 i.bi {
+    color: #1f38b7;
+}
+
+.card.bg-gold {
+    background: #783521;
+}
+
+.card.bg-gold .card-note {
+    background: #b85631 !important;
+}
+
+.card.bg-gold i.bi {
+    color: #b85631 !important;
+}
+
+.card.bg-alternate-2 .card-note {
+    background: #C45000 !important;
+}
+
+.card.bg-alternate-2 i.bi {
+    color: #C45000;
+}
+
+.form-check.chart-filters {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.form-check.card-controls.chart-filters {
+    display: inline;
+    float: right;
+    margin-top: -23px;
+}
+
+
+.legend-box {
+    width: 50px;
+    height: 15px;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.legend-box.bg-above {
+    background-color: #ffb380;
+}
+
+.legend-box.bg-below {
+    background-color: #c45000;
+}
+
+.legend-box.bg-above-light {
+    background-color: #ffb380;
+}
+
+.legend-box.bg-below-light {
+    background-color: #c45000;
+}
+
+.legend-box.bg-same-light {
+    background-color: #20979e;
+}
+
+.legend-box.bg1 {
+    background-color: #2138b7;
+}
+
+.legend-box.bg2 {
+    background-color: #feb043;
+}
+
+.legend-box.bg3 {
+    background-color: #7ffe00;
+}
+
+.legend-box.bg4 {
+    background-color: #006cd7;
+}
+
+.secondary h1.card-text {
+    font-size: 30px !important;
+    padding: 10px;
+}
+
+img#ani_at_kita {
+    max-width: 88%;
+    height: auto;
+}
+
+.farmer .card.primary h2.smaller {
+    font-size: 25px;
+}
+
+.farmer .card.primary h2.smaller i.bi {
+    font-size: 12px;
+    line-height: 29px !important;
+}
+
+.padding-1 {
+    padding-top: 53px;
+}
+
+.padding-2 {
+    padding-top: 53px;
+}
+
+.padding-3 {
+    padding-top: 53px;
+}
+
+.bg-warning-2 {
+    background-color: #5b9134 !important;
+}
+
+.bg-warning-2 div.rounded-pill {
+    background-color: #33521d !important;
+}
+
+.bg-warning-2 div.rounded-pill p {
+    color: #ffffff !important;
+}
+
+.bg-warning-2 i.bi {
+    color: #33521d !important;
+}
+
+.card.bg-primary-3 {
+    background-color: #83a46c !important;
+}
+
+.card.bg-primary-3 .card-note {
+    background: #33521d !important;
+}
+
+.card.bg-primary-3 i.bi {
+    color: #33521d !important;
+}
+
+.bg-warning-3 {
+    background-color: #5b9134 !important;
+}
+
+p.d-inline-block.text-capitalize {
+    color: black;
+    font-weight: 400;
+}
+
+.table-success {
+    background-color: #ffb380 !important;
+}
+
+.table-danger {
+    background-color: #c45000 !important;
+}
+
+.table-warning {
+    background-color: #20979e !important;
+}
+
+.card-deck.top-list .card {
+    margin-right: 2px;
+}
+
+.provinces-dropdown {
+    height: 200px;
+    overflow-y: auto;
+}
+
+a#feedback-button {
+    margin: 30px 10px 15px 10px !important;
+    padding: 5px 15px !important;
+    font-size: 1em !important;
+}
+
+.table.table-fixed {
+    table-layout: fixed;
+}
+
+a.download-chart i.bi {
+    line-height: 19px !important;
+}
+
+img.logos-collaborators {
+    width: 50%;
+}
+
+input.form-control.hf {
+    display: none;
+}
+
+.btn-white {
+    background-color: white !important;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.btn-white:hover {
+    background-color: #dddddd !important;
+}
+
+a.btn.btn-info.download-chart,
+a.btn.btn-white.download-chart {
+    display: inline;
+    float: right;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+a.btn.btn-info.download-chart.tableb,
+a.btn.btn-white.download-chart.tableb {
+    display: inline;
+    float: right;
+    font-size: 12px;
+    margin-top: 13px;
+}
+
+a.btn.btn-info.download-chart.alt,
+a.btn.btn-white.download-chart.alt {
+    display: inline;
+    float: right;
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+a.btn.btn-info.download-chart i.bi,
+a.btn.btn-white.download-chart i.bi {
+    float: none;
+    display: inline-block;
+    font-size: 12px;
+    color: inherit;
+    position: relative;
+    line-height: normal;
+}
+
+div.timeseries-group {
+    font-size: 12px !important;
+    line-height: 12px !important;
+}
+
+div.timeseries-group p {
+    font-size: 12px !important;
+    line-height: 12px !important;
+}
+
+div.timeseries-group input {
+    margin-top: -2px;
+}
+
+div.semestral-prices,
+div.monthly-prices {
+    display: none;
+}
+
+i.bi-download-alt {
+    background-image: url("../assets/download.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 1px 0px;
+    border: none;
+    cursor: pointer;
+    height: 16px;
+    padding-left: 16px;
+    vertical-align: middle;
+    margin-left: 0 !important;
+}
+
+
+
+div.btn-group-toggle label.btn {
+    background: #e4e4e4 !important;
+    border: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 27px;
+    width: 90px;
+    font-size: 11px;
+}
+
+div.btn-income label.btn {
+    width: 120px !important;
+}
+
+div.btn-group-toggle label.btn.active {
+    background: #1f38b7 !important;
+    color: black;
+}
+
+div.scrollable-chart {
+    height: 950px;
+    overflow-y: scroll;
+}
+
+div.chart-toggles {
+    display: inline;
+    float: right;
+    margin-top: 9px;
+    margin-right: 20px;
+}
+
+div.chart-toggles {
+    display: inline;
+    float: right;
+    margin-top: 9px;
+    margin-right: 20px;
+}
+
+div#phl,
+div#phl-top,
+div#phl-reg-all,
+div#phl-reg {
+    position: relative;
+}
+
+svg.datamap {
+    background-image: url("../assets/basemap_ph.jpg") !important;
+    background-size: contain;
+}
+
+div#phl svg,
+path.datamaps-subunit {
+    cursor: default;
+}
+
+.dashboard .card {
+    border: 0 !important;
+}
+
+.dashboard .primary div.caret-select,
+.dashboard .secondary div.caret-select {
+    height: 100%;
+    width: 25px;
+    z-index: 1;
+    position: absolute;
+    left: calc(100% - 25px);
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.dashboard .primary div.caret-select {
+    background: #fe7f00;
+}
+
+.dashboard .secondary div.caret-select,
+.farmer .primary div.caret-select,
+.farming .primary div.caret-select {
+    background: #ababab;
+    opacity: 0.8;
+}
+
+.farmer .bg-warning div.caret-select {
+    background: #302d63;
+}
+
+i.bi-caret-right-alt {
+    background-image: url(../assets/caret.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 1px 0px;
+    border: none;
+    cursor: pointer;
+    padding-left: 16px;
+    margin-left: 0 !important;
+    height: 100%;
+    top: 41%;
+    left: 1px;
+    transition: 0.3s;
+}
+
+.dashboard .card.secondary,
+.farmer .card.primary {
+    padding-right: 25px;
+    background-color: #f1f1f1;
+}
+
+.farming .card.primary {
+    background-color: #f1f1f1;
+}
+
+.dashboard .card.secondary .card-note {
+    background-color: #2138b7;
+}
+
+.dashboard .card.secondary i.bi {
+    font-size: 12px;
+    float: right;
+    display: inline;
+    vertical-align: middle;
+    line-height: 30px;
+    position: absolute;
+    margin-left: 5px;
+    color: #2138b7
+}
+
+.farmer .bg-warning {
+    background-color: #b85533 !important;
+}
+
+.farmer .text-primary {
+    color: #19266b !important;
+}
+
+.farmer .primary i.bi {
+    color: #b85533 !important;
+}
+
+.farmer .card-note.bg-primary {
+    background-color: #19266b !important;
+}
+
+.farming .bg-warning-2 div.caret-select {
+    background: #19266b;
+    opacity: 0.8;
+}
+
+span.case {
+    font: inherit;
+}
